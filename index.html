@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى حلم حياتي ✨</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* تأثير النجوم اللامعة في الخلفية */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: starsMove 30s linear infinite;
+            opacity: .5;
+            z-index: -2;
+        }
+
+        @keyframes starsMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-200px); }
+        }
+
+        /* تأثير نبض القلب في الخلفية */
+        body::after {
+            content: "❤️";
+            position: fixed;
+            font-size: 400px;
+            color: rgba(255, 77, 136, 0.03);
+            z-index: -3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: heartBeatEffect 1.5s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes heartBeatEffect {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.15); }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(white 1px, transparent 1px);
+            background-size: 60px 60px, 100px 100px;
+            animation: moveStars 40s linear infinite;
+            z-index: -1;
+            opacity: .5;
+        }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-200px); }
+        }
+
+        /* زر تشغيل الموسيقى */
+        .musicBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            background: #ff4d88;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 77, 136, 0.4);
+            transition: 0.3s;
+        }
+        .musicBtn:hover {
+            transform: scale(1.1);
+        }
+
+        /* عبارة I Love You تظهر وتختفي */
+        .flashing-love {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ff4d88;
+            animation: flash 3s infinite;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.6);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* رسالة الليل التلقائية */
+        #nightMessage {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            font-size: 14px;
+            background: rgba(56, 189, 248, 0.2);
+            color: #7dd3fc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            z-index: 1000;
+        }
+
+        /* عداد الحب المشترك */
+        #loveCounter {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 18px;
+            color: #7dd3fc;
+            font-weight: bold;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* حاوية الموقع الأساسي */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(20, 27, 45, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            display: none; /* مخفي حتى كتابة الباسورد */
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        .page.active {
+            display: block;
+        }
+        h2 {
+            color: #7dd3fc;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            text-align: justify;
+        }
+        .scroll-box {
+            max-height: 250px;
+            overflow-y: auto;
+            text-align: right;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .scroll-box p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .btn-nav {
+            background-color: #38bdf8;
+            color: #0b0f19;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px 5px;
+        }
+        .btn-nav:hover {
+            background-color: #0ea5e9;
+            transform: scale(1.05);
+        }
+        .grid-memories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .memory-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+            text-align: right;
+        }
+        .memory-box h3 {
+            font-size: 14px;
+            color: #f43f5e;
+            margin-bottom: 5px;
+        }
+        .memory-box p {
+            font-size: 13px;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+        .final-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            position: relative;
+            min-height: 60px;
+        }
+        .btn-yes {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-yes:hover {
+            transform: scale(1.1);
+            background-color: #059669;
+        }
+        .btn-no {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            position: absolute;
+            transition: 0.1s ease;
+        }
+        .gif-container {
+            margin: 15px 0;
+        }
+        .gif-container img {
+            max-width: 150px;
+            border-radius: 10px;
+        }
+
+        /* الوردة المتحركة في الصفحة الأخيرة */
+        .animated-rose {
+            font-size: 50px;
+            margin: 20px 0;
+            animation: spinRose 5s linear infinite alternate;
+            display: inline-block;
+        }
+        @keyframes spinRose {
+            from { transform: rotate(-15deg) scale(1); }
+            to { transform: rotate(15deg) scale(1.2); }
+        }
+
+        /* استايل صفحات الترحيب الكبيرة والباسورد */
+        .start-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0b0f19;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            padding: 20px;
+        }
+        .welcomeTitle {
+            font-size: 45px;
+            color: #ff5ca8;
+            text-shadow: 0 0 20px #ff5ca8;
+            animation: zoom 2s infinite alternate;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .welcomeText {
+            font-size: 22px;
+            color: white;
+            margin-top: 15px;
+            text-align: center;
+        }
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .start-page h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .start-page input {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .start-page button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #ff4d88;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .start-page button:hover {
+            transform: scale(1.05);
+            background: #e03570;
+        }
+        #errorText {
+            margin-top: 15px;
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        /* تأثير الخاتم الأسطوري */
+        #ring {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 100px;
+            transition: 1s;
+            display: none;
+            z-index: 9999;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div id="ring">💍</div>
+<div class="flashing-love">💖 I Love You</div>
+<div id="nightMessage">🌙 Good Night My Love</div>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<button class="musicBtn" onclick="document.getElementById('bgMusic').play()">🎵</button>
+
+<div id="welcomePage" class="start-page">
+    <h1 class="welcomeTitle">Welcome Rouh Hayati ❤️</h1>
+    <p class="welcomeText">You are the most beautiful thing that ever happened in my life ✨</p>
+    <button onclick="showPassword()">Continue ✨</button>
+</div>
+
+<div id="passwordPage" class="start-page" style="display:none;">
+    <h2>🔒 Enter Password</h2>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">Enter ❤️</button>
+    <p id="errorText"></p>
+</div>
+
+<div class="container" id="mainContainer">
+    
+    <h2 id="loveCounter"></h2>
+
+    <div class="page active" id="page1">
+        <h2>بداية حكايتنا ✨</h2>
+        <p>عرفتك وبدأت حكايتنا في أجمل وقت.. اليوم اللي غير دنيتي كلها ونورها، وبقيتي فيه كل دنيتي. من اللحظة دي وأنا حاسس إن عمري الحقيقي لسه بادئ معاكي.</p>
+        <p>رغم إننا لسه ما اتقابلناش في الحقيقة والمسافات بين عيوني وعيونك بعيدة، بس أنتِ دايماً أقرب لقلبي من نفسي، وروحك عايشة جوايا. كل يوم بيعدي عليا وأنا بعشقك فيه أكتر من اللي قبله، ومستني بلهفة وشوق اليوم اللي يجمعنا سوا في مكان واحد عشان أقولك قصاد عيونك قد إيه أنتِ أغلى حاجة في حياتي كلها. 🫀❤️</p>
+        <button class="btn-nav" onclick="nextPage('pageNew1')">التالي ➔</button>
+    </div>
+
+    <div class="page" id="pageNew1">
+        <h2>إنتِ أجمل قدر ❤️</h2>
+        <p>يمكن الدنيا فيها ملايين البشر، لكن قلبي اختارك إنتِ من بينهم كلهم. كل يوم معاكِ بحس إني كسبت الدنيا، وكل دقيقة بتعدي وأنا بحبك أكتر من اللي قبلها.</p>
+        <p>نفسي اليوم اللي أشوف ضحكتك قدامي وأقولك قد إيه أنا محظوظ إن ربنا رزقني بيكي. إنتِ راحتي وسعادتي وكل حلم نفسي أعيشه.</p>
+        <button class="btn-nav" onclick="nextPage('page1')">رجوع</button>
+        <button class="btn-nav" onclick="nextPage('pageNew2')">التالي ❤️</button>
+    </div>
+
+    <div class="page" id="pageNew2">
+        <h2>رسالة من قلبي 🌙</h2>
+        <div class="scroll-box">
+            <p>لو سألوني عن أجمل نعمة في حياتي هقول اسمك بدون تفكير.</p>
+            <p>وجودك جنبي خلاني أعرف يعني إيه أمان ويعني إيه حب بجد.</p>
+            <p>أنا مش بتمنى غير إننا نكمل سوا ونفضل سند لبعض طول العمر.</p>
+            <p>بحب ضحكتك، كلامك، اهتمامك، وغيرتك، وكل تفاصيلك الصغيرة قبل الكبيرة.</p>
+            <p>ربنا يخليكي ليا ويجمعنا في الخير دايمًا.</p>
+        </div>
+        <button class="btn-nav" onclick="nextPage('pageNew1')">رجوع</button>
+        <button class="btn-nav" onclick="nextPage('pageNew3')">التالي ✨</button>
+    </div>
+
+    <div class="page" id="pageNew3">
+        <h2>أسباب حبي ليكي 💖</h2>
+        <div class="memory-box">❤️ بحب طريقتك في الكلام.</div>
+        <div class="memory-box">🌹 بحب اهتمامك بيا.</div>
+        <div class="memory-box">🫂 بحب إنك بتطمني عليا.</div>
+        <div class="memory-box">😂 بحب ضحكتك.</div>
+        <div class="memory-box">🥹 بحب غيرتك عليا.</div>
+        <div class="memory-box">✨ بحب كل حاجة فيكي.</div>
+        <button class="btn-nav" onclick="nextPage('pageNew2')">رجوع</button>
+        <button class="btn-nav" onclick="nextPage('page2')">التالي ➔</button>
+    </div>
+
+    <div class="page" id="page2">
+        <h2>ذكرياتنا المحفورة في القلب 🪐</h2>
+        <div class="grid-memories">
+            <div class="memory-box">
+                <h3>أول معرفة 🗓️</h3>
+                <p>2026/4/22 .. اليوم التاريخي اللي ربنا نور فيه دنيتي بظهور روح حياتي.</p>
+            </div>
+            <div class="memory-box">
+                <h3>اللحظة المفضلة 💖</h3>
+                <p>2026/6/2 .. اليوم اللي اعترفتيلي فيه بحبك والكون مابقاش سايعني من الفرحة.</p>
+            </div>
+            <div class="memory-box">
+                <h3>مكان بنحبه 🗺️</h3>
+                <p>الشات الصغير اللي جمع بين قلوبنا، ومستني اللقاء الحقيقي بفارغ الصبر.</p>
+            </div>
+            <div class="memory-box">
+                <h3>وقت الدلع 😂</h3>
+                <p>طريقتك لما تقوليلي كلام حلو، ولما تدلعي عليا وتديني بوسة في الشات تخليني طاير.</p>
+            </div>
+        </div>
+        <button class="btn-nav" onclick="nextPage('pageNew3')">🎰 رجوع</button>
+        <button class="btn-nav" onclick="nextPage('page3')">التالي ➔</button>
+    </div>
+
+    <div class="page" id="page3">
+        <h2>عالمنا الخاص Our World 🌍</h2>
+        <div class="scroll-box">
+            <p>عايز أقولك إنك مش مجرد بنت بحبها، أنتِ الحياة اللي تمنيتها من سنين 🌟، وأجمل حاجة حصلتلي في دنيتي، أنتِ الحلم اللي صحيت عليه ولقيته قدامي، وعوض ربنا الكبير ليا اللي مفيش كلام يقدر يوصفه 💖.</p>
+            <p>أنتِ الأمان اللي قلبي ارتاح فيه والدفا اللي بحس بيه في وسط كل تعب 🫂. من يوم ما عرفتك والدنيا بقت ليها طعم تاني خالص، الضحكة بقت تطلع من القلب، والدنيا بقى فيها أمل ونور ✨، وبقيت بصحى كل يوم الصبح وأنا مبسوط وطاير من الفرحة بس لمجرد إنك موجودة في حياتي.</p>
+            <p>أنتِ مش بس حبيبتي، أنتِ بنتي الصغيره 🧸، وسندي وضهري في الوجع، وأخت روحي، وملاكي اللي ربنا بعتهولي من السما عشان ينور أيامي ☀️. أنا بحب كل تفاصيلك.. بحب صوتك، وبموت في خناقك وغيرتك عليا اللي بتخليني أحس إني أملك الدنيا كلها 💗.</p>
+            <p>أوعدك ووعد شرف إني هفضل جمبك، هفضل سندك وضهرك اللي مش بيميل، هفضل الإنسان اللي كل همّه في الحياة إنه يفرحك ويطبطب عليكي في كل لحظة حزن.. بحبكككك لآخر العمر يا كل دنيتي 🫀❤️</p>
+        </div>
+        <button class="btn-nav" onclick="nextPage('page2')">🎰 رجوع</button>
+        <button class="btn-nav" onclick="nextPage('page4')">التالي ➔</button>
+    </div>
+
+    <div class="page" id="page4">
+        <h2>سؤال من كل قلبي 🫀</h2>
+        <p>يا روح وعمر حياتي كلها.. أنا وقفت قدام دنيتك وعرفت إن ماليش غيرك، وإن الكون ده كله في كفة وأنتِ لوحدك في كفة تانية خالص مالهاش مثيل. أنا شاري خاطرك وروحك ومستقبلي كله شايفه بين عيونك.</p>
+        <p style="color: #7dd3fc; font-weight: bold; text-align: center;">تقبلي تكملي دنيتك وعمرك اللي جاي كله معايا ونفضل لبعض طول العمر؟ 💖</p>
+        
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMxi1Y2Nndnd0ZzZicms1M29yeXN5bnd5ZXBvMXA3bWh0Z3N6ZXBvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBIFvPPuGXBto8m/giphy.gif" alt="Cute Bear">
+        </div>
+
+        <div class="final-buttons">
+            <button class="btn-yes" onclick="showRing();rainHearts();loveEffect();explodeEffects();nextPage('page5')">نعم وأكيد! 💍</button>
+            <button class="btn-no" id="noBtn" onmouseover="moveNoButton()">لا 😢</button>
+        </div>
+    </div>
+
+    <div class="page" id="page5">
+        <h1 style="font-size:50px; color:#ff4d88; margin-bottom: 15px;">Forever & Always ❤️</h1>
+        <h2 style="font-size:35px; color:#ff5ca8; margin-bottom: 15px;">إنتِ أحلى حاجة حصلتلي في حياتي ❤️</h2>
+        
+        <p style="font-size:20px; line-height:2; text-align: center; margin-bottom: 15px; color: #e2e8f0;">
+            يمكن الكلام ميقدرش يوصف اللي جوايا، لكن كل نبضة في قلبي بتقول اسمك. أنا بحبك حب ملوش آخر، وواثق إن أجمل أيامنا لسه جاية.
+        </p>
+
+        <div class="animated-rose">🌹</div>
+
+        <h1 style="margin-top:30px; color: #ffffff;">Ahmed ❤️ Rouh Hayati</h1>
+        <h2 style="color: #7dd3fc; margin-bottom: 10px;">Forever ∞</h2>
+        <p style="font-size:18px; color: rgba(255,255,255,0.5);">22/4/2026 ∞</p>
+        
+        <p style="font-size:20px; text-align: center; font-weight: bold; color: #38bdf8; margin-top: 15px;">
+            I will always choose you, every day, every moment, forever. 💖
+        </p>
+        
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbms1amZ3YW90bTJobndwN3V3bXRxY3R0em85bW93cXp0M3R0N3o3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26FLdmIp6wJr91JAI/giphy.gif" alt="Love Celebrate">
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // تشغيل تأثير مطر القلوب التلقائي في الخلفية طوال الوقت بمعدل هادئ
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-50px";
+        heart.style.fontSize = (15 + Math.random() * 15) + "px";
+        heart.style.transition = "7s linear";
+        heart.style.pointerEvents = "none";
+        heart.style.opacity = Math.random();
+        heart.style.zIndex = "-1";
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.style.top = "110vh"; }, 50);
+        setTimeout(() => { heart.remove(); }, 7000);
+    }, 400);
+
+    // حساب عداد الحب التلقائي بالدقائق والساعات والأيام
+    const start = new Date("2026-04-22");
+    setInterval(() => {
+        const now = new Date();
+        const diff = now - start;
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor(diff / 3600000);
+        const minutes = Math.floor(diff / 60000);
+        document.getElementById("loveCounter").innerHTML = 
+            `❤️ Together For ${days} Days<br>⏰ ${hours} Hours<br>💕 ${minutes} Minutes`;
+    }, 1000);
+
+    // التحقق من الوقت لإظهار رسالة تصبحين على خير تلقائياً بالليل (من 8 مساءً لـ 5 صباحاً)
+    const currentHour = new Date().getHours();
+    if (currentHour >= 20 || currentHour < 5) {
+        document.getElementById("nightMessage").style.display = "block";
+    }
+
+    // وظائف صفحات الحماية والباسورد
+    function showPassword() {
+        document.getElementById("welcomePage").style.display = "none";
+        document.getElementById("passwordPage").style.display = "flex";
+    }
+
+    function checkPassword() {
+        const pass = document.getElementById("passwordInput").value;
+        if (pass === "love") {
+            document.getElementById("passwordPage").style.display = "none";
+            document.getElementById("mainContainer").style.display = "block";
+        } else {
+            document.getElementById("errorText").innerHTML = "❌ Wrong Password";
+        }
+    }
+
+    // تأثير الانتقال المحدث والمطلوب للتنقل الذكي والناعم بين الصفحات عبر المعرفات النصية
+    function nextPage(pageId){
+        document.querySelectorAll(".page").forEach(p=>{
+            p.classList.remove("active");
+        });
+        document.getElementById(pageId).classList.add("active");
+        window.scrollTo(0,0);
+    }
+
+    // حركة هروب زرار لا
+    function moveNoButton() {
+        const noBtn = document.getElementById('noBtn');
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 100) - (window.innerWidth / 4);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 100) - (window.innerHeight / 4);
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    }
+
+    // تأثير انفجار القلوب الأساسي من الأسفل لأعلاه عند الموافقة
+    function loveEffect() {
+        for (let i = 0; i < 40; i++) {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.style.position = "fixed";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "100vh";
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+            heart.style.transition = "3s ease-out";
+            heart.style.pointerEvents = "none";
+            heart.style.zIndex = "999";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.top = "-50px";
+                heart.style.opacity = "0";
+            }, 50);
+
+            setTimeout(() => { heart.remove(); }, 3000);
+        }
+    }
+
+    // تأثير مطر قلوب ينطلق بغزارة من الأعلى لـ 10 ثواني كاملة
+    function rainHearts() {
+        let interval = setInterval(() => {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.style.position = "fixed";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "-50px";
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+            heart.style.transition = "5s linear";
+            heart.style.pointerEvents = "none";
+            heart.style.zIndex = "999";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.style.top = "110vh";
+                heart.style.opacity = "0";
+            }, 50);
+
+            setTimeout(() => { heart.remove(); }, 5000);
+        }, 120);
+
+        setTimeout(() => { clearInterval(interval); }, 10000);
+    }
+
+    // تأثير ظهور الخاتم وتكبير حجمه
+    function showRing() {
+        const ring = document.getElementById("ring");
+        ring.style.display = "block";
+        setTimeout(() => {
+            ring.style.transform = "translate(-50%, -50%) scale(1.5)";
+        }, 50);
+        setTimeout(() => {
+            ring.style.opacity = "0";
+            setTimeout(() => { ring.style.display = "none"; ring.style.opacity = "1"; }, 1000);
+        }, 2500);
+    }
+
+    // تأثير انفجار قلوب ونجوم مجتمعة في المركز عند الضغط على نعم
+    function explodeEffects() {
+        const particles = ["❤️", "✨", "💖", "🌟"];
+        for(let i=0; i<50; i++) {
+            let p = document.createElement("div");
+            p.innerHTML = particles[Math.floor(Math.random() * particles.length)];
+            p.style.position = "fixed";
+            p.style.left = "50vw";
+            p.style.top = "50vh";
+            p.style.fontSize = (15 + Math.random() * 25) + "px";
+            p.style.transition = "2s ease-out";
+            p.style.pointerEvents = "none";
+            p.style.zIndex = "9999";
+            document.body.appendChild(p);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 50 + Math.random() * 200;
+            const xDist = Math.cos(angle) * velocity;
+            const yDist = Math.sin(angle) * velocity;
+
+            setTimeout(() => {
+                p.style.transform = `translate(${xDist}px, ${yDist}px)`;
+                p.style.opacity = "0";
+            }, 50);
+
+            setTimeout(() => { p.remove(); }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>
+    
+  </body>
+  
+</html>
